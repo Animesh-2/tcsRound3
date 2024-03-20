@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./Quiz.css";
+import { useDispatch } from "react-redux";
+import { setQuizPreferences } from "../../redux/action";
 
-const Quiz = ({ onSubmit }) => {
+const Quiz = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
@@ -9,7 +12,7 @@ const Quiz = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ name, category, difficulty, numQuestions });
+    dispatch(setQuizPreferences({ name, category, difficulty, numQuestions }));
   };
 
   return (
